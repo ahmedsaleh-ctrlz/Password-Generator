@@ -11,6 +11,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
     <div class="password-container">
@@ -23,10 +24,12 @@
           placeholder="Create Password"
           readonly
         />
-        <i class="fa-solid fa-copy"></i>
+        <i class="fa-solid fa-copy fa-2x tooltip"
+          ><span class="tooltip-text">Copy</span></i
+        >
       </div>
       <button class="btn">Generate Password</button>
     </div>
-    <div class="alert-contatiner"></div>
+    <div class="alert-container hide">Password Copied</div>
   </body>
 </html>
