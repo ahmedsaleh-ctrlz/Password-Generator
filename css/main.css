@@ -136,6 +136,10 @@ body {
   transition: transform 0.4s ease;
 }
 
+.alert-container.error {
+  background: linear-gradient(to right, #ef4444, #7f1d1d);
+}
+
 .hide.alert-container {
   transform: translateX(120%);
 }

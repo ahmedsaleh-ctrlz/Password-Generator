@@ -23,6 +23,7 @@ function GeneratePassword(length = 12) {
   }${getElement("numbers").checked ? numbers : ""}${
     getElement("symbols").checked ? symbols : ""
   }`;
+  if (!Passwordchars) return "";
   let password = "";
   for (let i = 0; i < length; i++) {
     password += Passwordchars[Math.floor(Math.random() * Passwordchars.length)];
@@ -31,8 +32,17 @@ function GeneratePassword(length = 12) {
   return password;
 }
 
-function showAlert() {
+function showAlert(isSuccess = true) {
   let alert = document.querySelector(".alert-container");
+  alert.textContent = isSuccess
+    ? "Password Generated"
+    : "Choose at least one Option";
+
+  if (isSuccess) {
+    alert.classList.remove("error");
+  } else {
+    alert.classList.add("error");
+  }
   alert.classList.remove("hide");
   setTimeout(() => {
     alert.classList.add("hide");
@@ -63,6 +73,10 @@ async function copyPasswordToClipboard() {
 
 btn.addEventListener("click", () => {
   input.value = GeneratePassword();
+  if (!input.value) {
+    showAlert(0);
+    return;
+  }
   showAlert();
   playSound();
 });
