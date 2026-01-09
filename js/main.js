@@ -9,6 +9,8 @@ const allChars = upper + lower + numbers + symbols;
 const btn = getElement("btn");
 const input = getElement("input");
 const Copy = getElement("Copy");
+let sound = new Audio("/Password Generator/audio/success.mp3");
+sound.preload = "auto";
 
 // Utilty Func
 function getElement(id) {
@@ -33,8 +35,8 @@ function showAlert() {
 }
 
 function playSound() {
-  let sound = new Audio("/audio/success.mp3");
-  sound.play();
+  sound.currentTime = 0;
+  sound.play().catch(() => {});
 }
 
 function ChangeCopyText(text) {
@@ -42,15 +44,14 @@ function ChangeCopyText(text) {
 }
 
 async function copyPasswordToClipboard() {
-    if(!input.value) return false;
+  if (!input.value) return false;
 
-    try{
-        await navigator.clipboard.writeText(input.value);
-        return true;
-    }
-    catch{
-        return false
-    }
+  try {
+    await navigator.clipboard.writeText(input.value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 //#region GeneratePassword
@@ -65,15 +66,14 @@ btn.addEventListener("click", () => {
 
 // Copy Feauture
 
-Copy.addEventListener("click",async () => {
+Copy.addEventListener("click", async () => {
   if (await copyPasswordToClipboard()) {
     ChangeCopyText("Copied");
-  }
-  else{
+  } else {
     ChangeCopyText("Empty Field");
   }
 
-  setTimeout(()=>{ChangeCopyText("Copy")},1000);
-
+  setTimeout(() => {
+    ChangeCopyText("Copy");
+  }, 1000);
 });
-
