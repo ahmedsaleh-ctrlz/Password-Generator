@@ -60,8 +60,9 @@ body {
   background-color: transparent;
   outline: none;
   font-size: 20px;
-  color: rgb(56, 134, 56);
+  color: rgb(0, 0, 0);
   letter-spacing: 3px;
+  font-weight: bold;
 }
 
 .input::placeholder {
@@ -75,6 +76,10 @@ body {
 }
 .fa-copy:hover {
   opacity: 0.9;
+}
+
+.fa-copy:active{
+    transform: scale(0.95);
 }
 
 .btn {
@@ -134,6 +139,7 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  transition: all 0.5s ease;
 }
 
 .hide.alert-container {
