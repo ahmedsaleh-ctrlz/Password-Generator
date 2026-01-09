@@ -4,12 +4,11 @@ const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lower = "abcdefghijklmnopqrstuvwxyz";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?";
-const allChars = upper + lower + numbers + symbols;
 
 const btn = getElement("btn");
 const input = getElement("input");
 const Copy = getElement("Copy");
-let sound = new Audio("/Password Generator/audio/success.mp3");
+let sound = new Audio("./audio/success.mp3");
 sound.preload = "auto";
 
 // Utilty Func
@@ -18,9 +17,15 @@ function getElement(id) {
 }
 
 function GeneratePassword(length = 12) {
+  length = parseInt(getElement("length").value) || 12;
+  let Passwordchars = `${getElement("uppercase").checked ? upper : ""}${
+    getElement("lowercase").checked ? lower : ""
+  }${getElement("numbers").checked ? numbers : ""}${
+    getElement("symbols").checked ? symbols : ""
+  }`;
   let password = "";
   for (let i = 0; i < length; i++) {
-    password += allChars[Math.floor(Math.random() * allChars.length)];
+    password += Passwordchars[Math.floor(Math.random() * Passwordchars.length)];
   }
 
   return password;

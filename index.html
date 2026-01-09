@@ -15,7 +15,43 @@
   </head>
   <body>
     <div class="password-container">
-      <h2>Random Password Generator</h2>
+      <h2 class="title">Random Password Generator</h2>
+
+      <div class="options">
+        <div class="option">
+          <input class="checkbox" type="checkbox" id="uppercase" checked />
+          <label for="uppercase">Include Uppercase Letters</label>
+        </div>
+
+        <div class="option">
+          <input class="checkbox" type="checkbox" id="lowercase" checked />
+          <label for="lowercase">Include Lowercase Letters</label>
+        </div>
+
+        <div class="option">
+          <input class="checkbox" type="checkbox" id="numbers" checked />
+          <label for="numbers">Include Numbers</label>
+        </div>
+
+        <div class="option">
+          <input class="checkbox" type="checkbox" id="symbols" checked />
+          <label for="symbols">Include Symbols</label>
+        </div>
+      </div>
+
+      <div class="password-length">
+        <label for="length">Password Length:</label>
+        <input
+          type="number"
+          id="length"
+          class="length"
+          min="4"
+          max="20"
+          value="12"
+        />
+      </div>
+
+      <button id="btn" class="btn">Generate Password</button>
       <div class="input-container">
         <input
           type="text"
@@ -28,7 +64,6 @@
           ><span class="tooltip-text">Copy</span></i
         >
       </div>
-      <button id="btn" class="btn">Generate Password</button>
     </div>
     <div class="alert-container hide">Password Generated</div>
     <script src="js/main.js"></script>
